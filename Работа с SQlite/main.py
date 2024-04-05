@@ -1,8 +1,8 @@
 import re
 import sqlite3
 
-bib_path = '/content/drive/MyDrive/biblio.bib'
-sql_path = '/content/drive/MyDrive/bib.db'
+bib_path = 'путь к файлу biblio.bib'
+sql_path = 'путь к вашей БД'
 
 def make_field(fields, name):
     if name in fields:
@@ -10,7 +10,7 @@ def make_field(fields, name):
     else:
         return ""
 
-def parse_bibtex(bib_path, connection, cursor):
+def parse_bibtex(bib_path, connection, cursor): # переделанная функция из задания "Работа с библиотекой re"
     with open(bib_path, 'r', encoding='utf-8') as file:
         data = file.read()
 
@@ -50,7 +50,7 @@ UNIQUE ("Title") ON CONFLICT IGNORE
 
 parse_bibtex(bib_path, connection, cursor)
 
-cursor.execute("SELECT * FROM Book WHERE Author LIKE '%Путин%'") #делаем запрос, чтобы вывести все книги с автором Путин
+cursor.execute("SELECT * FROM Book WHERE Author LIKE '%Путин%'") # делаем запрос, чтобы вывести все книги с автором Путин
 books = cursor.fetchall()
 for book in books:
     print(book)
