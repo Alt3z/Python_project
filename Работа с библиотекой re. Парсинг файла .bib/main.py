@@ -36,15 +36,11 @@ def parse_bibtex(file_path):
             if 'Language' in fields:
                 reference += f" Language: {fields['Language'].strip()}"
 
-                if fields['Language'] == 'russian':
-                  reference = reference.replace("Vol", "Звук")
-                  reference = reference.replace("– P.", "- С.")
-
             parsed_references.append(reference)
 
     return parsed_references
 
-file_path = '/content/drive/MyDrive/biblio.bib'
+file_path = 'ваш путь к файлу .bib'
 
 references = parse_bibtex(file_path)
 for reference in references:
